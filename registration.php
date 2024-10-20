@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #F3F3FE;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,14 +17,15 @@
 
         .container {
             background-color: white;
-            padding: 20px;
+            padding: 30px;
+            padding-right: 50px;
             border-radius: 10px;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
             width: 400px;
             text-align: left;
         }
 
-        h2 {
+        h1 {
             text-align: center;
         }
 
@@ -56,18 +57,16 @@
 
         .success {
             color: green;
-            display: none;
         }
 
         .error {
             color: red;
-            display: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Register</h2>
+        <h1>Student Registration</h1>
 
         
         <?php
@@ -83,7 +82,7 @@
 
             // Simple validation check
             if (empty($name) || empty($id) || empty($password) || empty($course) || empty($dob) || empty($year)) {
-                echo "<center> All fields are required!</center>";
+                echo "<center class=error> All fields are required!</center>";
             } else {
                  $mysql=mysqli_connect("localhost","root","","minor_project");
                  $sql="insert into student values('$id','$password','$name','$dob','$course','$year')";
@@ -94,7 +93,7 @@
                 // $ps->bind_param("issssi",$id,$password,$name,$dob,$course,$year);
                 // $ps->execute();
 
-                echo "<center> Registration successful!</center>";
+                echo "<center class=success> Registration successful!</center>";
             }
         }
         ?>
