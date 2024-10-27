@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Student</title>
     <link rel="stylesheet" href="emni1.css">
     <style>
         img {
@@ -37,7 +37,8 @@
         }
 
         td {
-            /padding-left: 20px;/ font-size: 40px;
+            padding-left: 20px;
+            font-size: 30px;
             padding: 20px;
         }
 
@@ -169,9 +170,26 @@
 
         echo '<script>window.location.href = "index.html";</script>';
         exit();
-    } 
+    }
 
+    $row=mysqli_fetch_row($record_obj);
+    $name=$row[2];
+    $dob=$row[3];
+    $course=$row[4];
+    $year=$row[5];
     mysqli_close($mysql);
+
+
+
+    //LOGOUT
+    if (isset($_POST['logout'])) {
+        session_unset();
+        session_destroy();
+
+        echo '<script>alert("Logout successful");</script>';
+        echo '<script>window.location.href = "index.html";</script>';
+        exit();
+    }
 
 
     ?>
@@ -199,12 +217,12 @@
     <table>
         <tr>
             <td class="a" rowspan="2"><img src=""><br>add image</td>
-            <td class="a">name: <input type="text" name="name" placeholder="<?php echo $id; ?>"> </td>
-            <td class="a">course: <input type="text" name="course" placeholder="course"> </td>
+            <td class="a">name: <input type="text" name="name" placeholder="<?php echo $name; ?>"> </td>
+            <td class="a">course: <input type="text" name="course" placeholder="<?php echo $course; ?>"> </td>
         </tr>
         <tr>
             <td>roll: <input type="text" name="roll" placeholder="<?php echo $id; ?>"> </td>
-            <td>session: <input type="text" name="session" placeholder="session"> </td>
+            <td>Year: <input type="text" name="session" placeholder="<?php echo $year; ?>"> </td>
         </tr>
     </table>
 
@@ -217,23 +235,6 @@
         <div class="box"><img src="complain.png" alt="complain"> Compain Box</div>
     </div>
 
-
-
-    <?php
-
-    if (isset($_POST['logout'])) {
-        // Unset and destroy session
-        session_unset();
-        session_destroy();
-
-        // Display logout alert
-        echo '<script>alert("Logout successful");</script>';
-
-        // Redirect to index.html after the alert
-        echo '<script>window.location.href = "index.html";</script>';
-        exit();
-    }
-    ?>
 
 
 
