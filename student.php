@@ -145,12 +145,16 @@
             margin: 0px;
             padding: 0px;
         }
+        input{
+            border: none;
+            background-color: transparent;
+        }
     </style>
 </head>
 
 <body>
     <?php
-    session_start();
+    session_start(); 
     $id = $_SESSION["id"];
     $password = $_SESSION["password"];
 
@@ -206,7 +210,7 @@
                 <li><a href="#">About us</a></li>
                 <li><a href="#">Contact us</a></li>
                 <li>
-                    <form action="" method="post" class="btn"><input type="submit" name="logout"></form>
+                    <form action="" method="post" class="btn"><input type="submit" name="logout" value="Logout"></form>
                 </li>
             </div>
         </ul>
